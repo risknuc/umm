@@ -1,4 +1,5 @@
 #include "Character.hpp"
+
 namespace umm {
 
 Character::Character() :

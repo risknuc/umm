@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Config.hpp"
+#include "Functionality/Tools.hpp"
 
 namespace umm {
 

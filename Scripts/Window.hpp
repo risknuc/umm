@@ -9,6 +9,7 @@
 #include "Cursor.hpp"
 #include "Objects/Character.hpp"
 #include "Objects/Object.hpp"
+#include "Objects/Curl.hpp"
 #include "Config.hpp"
 #include "Functionality/Modules/Camera.hpp"
 
