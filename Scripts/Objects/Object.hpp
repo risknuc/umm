@@ -17,7 +17,7 @@ public:
     void update_logic(const sf::Time& delta_time, Camera& view_camera) override;
     void update_render(sf::RenderWindow& render_window, Camera& view_camera) override;
 
-    sf::Vector2f& request_coordinates(void) override;
+    const sf::Vector2f& request_coordinates(void) override;
     const char* request_object_vmname(void);
 private:
     Animator _object_animator; sf::Vector2f _object_position; const char* _object_vmname;

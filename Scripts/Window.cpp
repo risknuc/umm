@@ -7,11 +7,10 @@ Window::Window(void) :
     _render_window.setFramerateLimit(window_framerate_limit);
 }
 
-int Window::run_window_mainloop(void) {
+const char Window::run_window_mainloop(void) {
     _render_queue.append_to_rol(std::make_shared<Character>());
     _render_queue.append_to_rol(std::make_shared<Curl>());
-    // _render_queue.append_to_rol(std::make_shared<Object>("resources/err.png", sf::Vector2f(124.f, 124.f)));
-    
+
     _render_window.setMouseCursor(_window_cursor.request_window_cursor());
    
     while (_render_window.isOpen()) { _window_poll_event(); _update_window_render_logic(); }
@@ -31,8 +30,7 @@ inline void Window::_update_window_render_logic(void) {
 inline void Window::_window_poll_event(void) {
     sf::Event event;
     while (_render_window.pollEvent(event)) { 
-        if (event.type == sf::Event::Closed) 
-            _render_window.close(); 
+        if (event.type == sf::Event::Closed)   _render_window.close(); 
     }
 }
 

@@ -13,7 +13,7 @@ void Object::update_render(sf::RenderWindow& render_window, Camera& view_camera)
     render_window.draw(object_sprite);
 }
 
-sf::Vector2f& Object::request_coordinates(void) { return _object_position; }
+const sf::Vector2f& Object::request_coordinates(void) { return _object_position; }
 const char* Object::request_object_vmname(void) { return _object_vmname; }
 
 }

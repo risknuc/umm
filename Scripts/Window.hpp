@@ -18,8 +18,7 @@ namespace umm {
 class Window {
 public:
     Window(void);
-
-    int run_window_mainloop(void);
+    const char run_window_mainloop(void);
 private:
     inline void _window_poll_event(void);
     inline void _update_window_render_logic(void);

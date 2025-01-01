@@ -14,7 +14,7 @@ public:
     virtual void update_logic(const sf::Time& delta_time, Camera& view_camera) = 0;
     virtual void update_render(sf::RenderWindow& render_window, Camera& view_camera) = 0;
 
-    virtual sf::Vector2f& request_coordinates(void) = 0;
+    virtual const sf::Vector2f& request_coordinates(void) = 0;
 };
 
 }

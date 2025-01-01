@@ -17,6 +17,6 @@ Cursor::Cursor(void) {
         throw std::runtime_error("Unkown: create cursor from pixels -> false");
 }
 
-sf::Cursor& Cursor::request_window_cursor(void) { return _window_cursor; }
+const sf::Cursor& Cursor::request_window_cursor(void) { return _window_cursor; }
 
 }

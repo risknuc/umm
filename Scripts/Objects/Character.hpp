@@ -20,8 +20,10 @@ public:
     void update_logic(const sf::Time& delta_time, Camera& view_camera) override;
     void update_render(sf::RenderWindow& render_window, Camera& view_camera) override;
 
-    sf::Vector2f& request_coordinates(void) override;
+    const sf::Vector2f& request_coordinates(void) override;
 private:
+    void _update_character_velocity_vector(void);
+
     Animator _character_animator;
 
     sf::Vector2f _character_velocity, _character_coordinates;

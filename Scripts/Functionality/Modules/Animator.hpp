@@ -16,7 +16,7 @@ public:
     void set_selected_row(const unsigned short selected_new_row);
     void set_flip_var(const bool is_flipped);
 
-    sf::Sprite& request_sprite_to_render(void);
+    const sf::Sprite& request_sprite_to_render(void);
 private:
     sf::Sprite _animator_sprite; sf::Texture _atlas_animator_texture;
    

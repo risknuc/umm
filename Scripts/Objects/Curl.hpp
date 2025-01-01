@@ -24,8 +24,11 @@ public:
     void update_logic(const sf::Time& delta_time, Camera& view_camera) override;
     void update_render(sf::RenderWindow& render_window, Camera& view_camera) override;
 
-    sf::Vector2f& request_coordinates(void) override;
+    const sf::Vector2f& request_coordinates(void) override;
 private:
+    void _update_curl_volume_by_distance(Camera& view_camera);
+    void _create_new_curl_target_coordinates(void);
+
     Animator _curl_animator; sf::Clock _curl_movement_timer;
 
     std::random_device _rd; std::mt19937 _gen; std::uniform_int_distribution<> _distrib;

@@ -12,23 +12,16 @@ Character::Character() :
 
     _character_walking_sound.setBuffer(_character_walking_sound_buffer);
     _character_walking_sound.setLoop(true);
-    _character_walking_sound.setVolume(48u);
+    _character_walking_sound.setVolume(default_volume);
 }
 
 void Character::update_logic(const sf::Time& delta_time, Camera& view_camera) {
     _character_animator.update_animator_logic(delta_time);
 
-    _character_velocity = sf::Vector2f(0.f, 0.f);
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _character_velocity.y = -character_speed;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _character_velocity.y = character_speed;
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _character_velocity.x = -character_speed;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _character_velocity.x = character_speed;
+    _update_character_velocity_vector();
 
     if (_character_velocity != sf::Vector2f(0.f, 0.f)) {
-        if (_character_walking_sound.getStatus() != sf::Sound::Playing) 
-            _character_walking_sound.play();
+        if (_character_walking_sound.getStatus() != sf::Sound::Playing) _character_walking_sound.play();
 
         _character_coordinates += _character_velocity;
 
@@ -37,11 +30,20 @@ void Character::update_logic(const sf::Time& delta_time, Camera& view_camera) {
         _character_animator.set_flip_var(_character_velocity.x > 0 ? true : false);
         _character_animator.set_selected_row(1);
     } else {
-        if (_character_walking_sound.getStatus() == sf::Sound::Playing) 
-            _character_walking_sound.stop();
+        if (_character_walking_sound.getStatus() == sf::Sound::Playing) _character_walking_sound.stop();
 
         _character_animator.set_selected_row(0);
     }
+}
+
+void Character::_update_character_velocity_vector(void) {
+    _character_velocity = sf::Vector2f(0.f, 0.f);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _character_velocity.y = -character_speed;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _character_velocity.y = character_speed;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _character_velocity.x = -character_speed;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _character_velocity.x = character_speed;
 }
 
 void Character::update_render(sf::RenderWindow& render_window, Camera& view_camera) {
@@ -50,6 +52,6 @@ void Character::update_render(sf::RenderWindow& render_window, Camera& view_came
     render_window.draw(character_sprite);
 }
 
-sf::Vector2f& Character::request_coordinates(void) { return _character_coordinates; }
+const sf::Vector2f& Character::request_coordinates(void) { return _character_coordinates; }
 
 }

@@ -2,8 +2,7 @@
 
 namespace umm {
 
-Animator::Animator(const char* atlas_file_path) :
-    _frame_index(0.f), _selected_row(0.f), _selected_col(0.f) {
+Animator::Animator(const char* atlas_file_path) : _frame_index(0.f), _selected_row(0.f), _selected_col(0.f) {
     if (!_atlas_animator_texture.loadFromFile(atlas_file_path))
         throw std::runtime_error("Unkown: load animations atlas -> false");
 
@@ -25,8 +24,7 @@ void Animator::update_animator_logic(const sf::Time& delta_time) {
 }
 
 void Animator::set_selected_row(const unsigned short selected_new_row) {
-    if (selected_new_row < _frames_per_col)
-        _selected_row = selected_new_row;
+    if (selected_new_row < _frames_per_col) _selected_row = selected_new_row;
 }
 
 void Animator::set_flip_var(const bool is_flipped) {
@@ -40,7 +38,7 @@ void Animator::set_flip_var(const bool is_flipped) {
     }
 }
 
-sf::Sprite& Animator::request_sprite_to_render(void) {
+const sf::Sprite& Animator::request_sprite_to_render(void) {
     sf::IntRect frame_rect(_selected_col * frame_width, _selected_row * frame_height, 
         frame_width, frame_height);
     _animator_sprite.setTextureRect(frame_rect);
